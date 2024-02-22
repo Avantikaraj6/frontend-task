@@ -111,7 +111,7 @@
 @media only screen and (min-width: 998px)  {
   .body{
     display:flex !important;
-    margin:5rem;
+    margin:0 5rem;
   }
   .forcast{
     margin-right:4rem;
