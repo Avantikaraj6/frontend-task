@@ -8,8 +8,8 @@ const Box = ({value,weather,temp,logo,desc}) => {
         <img src={`https://openweathermap.org/img/wn/${logo}@2x.png`} className="icon"/>
         <h3>{weather}</h3>
         <p className="desc">{desc}</p>
-        <h6  className="humid">Temp : {temp.feels_like}</h6>
-        <h6 className="humid">Humidity: {temp.humidity}</h6>
+        <h6  className="humid">Temp : {Math.ceil( temp.feels_like -273.25)}&deg;C</h6>
+     <h6 className="humid">Humidity: {temp.humidity}</h6>
     </div>
   )
 }

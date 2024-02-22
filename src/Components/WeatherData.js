@@ -7,6 +7,8 @@ const [imaf,setImaf] = useState([])
 
 
   return (
+    <>
+
     <div className="weather-text">
       <div className="input-box">
         <input type="search" value={search} className="inputfield" onChange={(event) => {setSearch(event.target.value)}} />
@@ -17,8 +19,8 @@ const [imaf,setImaf] = useState([])
           <h2 className="location">
             <img src={streeticon} className="icon" /> {search.toUpperCase()}
           </h2>
-          <h1 className="temp">{location.temp}&deg;C</h1>
-          <h3 className="max">Min: {location.temp_min}&deg;C | Max :{location.temp_max}&deg;C</h3>
+          <h1 className="temp">{Math.ceil(location.temp - 273.15)}&deg;C</h1>
+          <h3 className="max">Min: {Math.ceil(location.temp_min - 273.15)}&deg;C | Max :{Math.ceil(location.temp_max - 273.15)}&deg;C</h3>
           <img src={`https://openweathermap.org/img/wn/${weat[0].icon}@2x.png`} /> 
           <h3 className="weather-tex">{weat[0].main}</h3>
         </div>
@@ -29,6 +31,7 @@ const [imaf,setImaf] = useState([])
         )}
       </div>
     </div>
+    </>
   )
 }
 

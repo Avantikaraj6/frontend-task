@@ -9,28 +9,38 @@ const Body = () => {
     const [weat , setWeat] = useState([])
   const [ forcastLoc, setForcastLoc] = useState([])
 
+   const d = new Date();
+   const weekday =["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"]
 
+  //  function CheckDay(){
+  //   if(day + d.getDay() >6){
+  //     return day + d.getDay() -7;
+  //   }
+  //   else{
+  //     return day +d.getDay
+  //   }
+  //   }
+  //  }
     const fetchApi = async () =>{
       const url =`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=aadf1304548dfaedf2739e822e461421`
       const response = await fetch(url);
       const resJson = await response.json();
       setLocation(resJson.main);
-      setWeat(resJson.weather);
-      console.log(setWeat)
+      setWeat(resJson.weather)
     };
 
   const forcastApi = async () => {
-    const response= await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`);
+    const response= await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search}&cnt=7&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`);
     const resJson = await response.json();
     setForcastLoc(resJson.list)
   }
     useEffect (() =>{
         fetchApi();
         forcastApi();
-      },[])
+    },[])
+
   return (
     <>
-    <h1 className="time-text weather-app">Realtime Weather App</h1>
     <div className="body">
         
 
