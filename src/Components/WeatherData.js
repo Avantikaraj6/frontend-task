@@ -4,7 +4,7 @@ import clouds from "./images/clouds.png"
 
 const WeatherData = ({location,weat,search,setSearch}) => {
 const [imaf,setImaf] = useState([])
-
+  // console.log(search)
 
   return (
     <>
