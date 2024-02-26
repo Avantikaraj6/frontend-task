@@ -23,16 +23,16 @@ const Body = () => {
     setWeat(resJson.weather);
   };
 
-  const forcastApi = async () => {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${search}&cnt=7&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`
-    );
-    const resJson = await response.json();
-    setForcastLoc(resJson.list);
-  };
+  // const forcastApi = async () => {
+  //   const response = await fetch(
+  //     `https://api.openweathermap.org/data/2.5/forecast?q=${search}&cnt=7&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`
+  //   );
+  //   const resJson = await response.json();
+  //   setForcastLoc(resJson.list);
+  // };
   useEffect(() => {
     fetchApi();
-    forcastApi();
+    // forcastApi();
   }, [search]);
 
   return (
@@ -44,7 +44,7 @@ const Body = () => {
           search={search}
           setSearch={setSearch}
         />
-        <Forcast forcastweat={forcastLoc} />
+        {/* <Forcast forcastweat={forcastLoc} /> */}
       </div>
     </>
   );
