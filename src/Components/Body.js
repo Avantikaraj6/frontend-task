@@ -14,28 +14,26 @@ const Body = () => {
 // destructuring
 //try catch
 
-   useEffect (() =>{
-    const fetchApi = async () =>{
-      const url =`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`
-      const response = await fetch(url);
-      const resJson = await response.json();
-      setLocation(resJson.main);
-      setWeat(resJson.weather);
-      console.log(resJson.weather)
-    };
+  const fetchApi = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=aadf1304548dfaedf2739e822e461421`;
+    const response = await fetch(url);
+    const resJson = await response.json();
+    setLocation(resJson.main);
+    console.log(resJson.weather)
+    setWeat(resJson.weather);
+  };
+
+  const forcastApi = async () => {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${search}&cnt=7&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`
+    );
+    const resJson = await response.json();
+    setForcastLoc(resJson.list);
+  };
+  useEffect(() => {
     fetchApi();
-  },[search])
-  // const forcastApi = async () => {
-  //   const response = await fetch(
-  //     `https://api.openweathermap.org/data/2.5/forecast?q=${search}&cnt=7&appid=fed1065bd13fe9cacc80c0d8fbc8b9dd`
-  //   );
-  //   const resJson = await response.json();
-  //   setForcastLoc(resJson.list);
-  // };
-  // useEffect(() => {
-  //   fetchApi();
-  //   forcastApi();
-  // }, []);
+    forcastApi();
+  }, [search]);
 
   return (
     <>
@@ -46,7 +44,7 @@ const Body = () => {
           search={search}
           setSearch={setSearch}
         />
-        {/* <Forcast forcastweat={forcastLoc} /> */}
+        <Forcast forcastweat={forcastLoc} />
       </div>
     </>
   );
